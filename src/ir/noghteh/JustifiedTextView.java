@@ -212,6 +212,7 @@ public class JustifiedTextView extends View {
 				if (i==arrayWords.length-1){
 					listStringLine.add(line);
 					line="";
+					listStringLine.add("\n"); // for create end of paragraph correctly
 				}	
 			}
 		} 
