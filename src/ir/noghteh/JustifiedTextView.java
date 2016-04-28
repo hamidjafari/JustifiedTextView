@@ -150,8 +150,8 @@ public class JustifiedTextView extends View {
 		
 		for (int i=0;i<lineList.size();i++){	
 			rowIndex+=getLineHeight()+getLineSpace();
-			
-			canvas.drawText(lineList.get(i), colIndex,rowIndex , getTextPaint());
+			//fix this > if ltr char placed as first word in any line , that line becomes ltr
+			canvas.drawText("\u200F" + lineList.get(i), colIndex,rowIndex , getTextPaint());
 		}		
 		
 	}
@@ -212,6 +212,10 @@ public class JustifiedTextView extends View {
 				if (i==arrayWords.length-1){
 					listStringLine.add(line);
 					line="";
+					//fix last line bug
+					if (j == listParageraphes.length -1 ) {
+						listStringLine.add(Html.fromHtml("&#160;").toString());
+					}
 				}	
 			}
 		} 
